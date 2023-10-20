@@ -1,9 +1,18 @@
-<h1>About</h1>
-<p>Find me in app/views/main/about.html.erb</p>
-<%= link_to('Tasks',{controller:'tasks', action:'index', page:1})%>
-<%= link_to('About',{controller:'main', action:'about',page:5,  id:20})%>
-<%= link_to('Home',{controller:'main', action:'index', page:1})%>
+<% content_for(:title, 'About') %>
 
-<p> created by <%= @author %></p>
-<p> id: <%= @id %></p>
-<p> page: <%= @page %></p>
+<%= link_to('Back to Menu', menu_path, class: 'back-link') %><br />
+
+<div class="main about">
+  <h2>About</h2>
+
+  <p>Description of the Task Manager.</p>
+
+  <p>Created by <%= @created_by %></p>
+
+</div>
+
+<% content_for(:script) do %>
+  <% name = "Kevin" %>
+  <% # name = "Kevin'); alert('Gotcha" %>
+  <%= javascript_tag("alert('Welcome, #{j(name)}!');") %>
+<% end %>
