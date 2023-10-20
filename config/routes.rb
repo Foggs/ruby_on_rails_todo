@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'menu' => 'access#menu'
+  get 'login' => 'access#new'
+  delete 'logout' => 'access#destroy'
+  resource :access, controller: 'access', only: [:new, :create, :destroy] do
+    member do
+      get :menu
+    end
+  end
   # get 'categories/index'
   # get 'categories/show'
   # get 'categories/new'
